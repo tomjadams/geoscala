@@ -1,5 +1,5 @@
 # intellij noise
-.iws
+*.iws
 
 # build
 i-build
