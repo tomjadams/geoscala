@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<project name="furnace" default="all" basedir=".">
+
+  <import file="build-setup.xml"/>
+
+  <taskdef resource="scala/tools/ant/antlib.xml" classpathref="main.class.path"/>
+  <taskdef resource="instincttask.properties" classpathref="spec.class.path"/>
+
+  <target name="all" depends="clean,spec,release"/>
+  <target name="compile" depends="clean,-compile"/>
+  <target name="spec" depends="clean,-spec"/>
+  <target name="scaladoc" depends="clean,-scaladoc"/>
+  <target name="jar" depends="clean,-jar-classes"/>
+  <target name="release" depends="clean,-release"/>
+
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="sequence" depends="-jar-classes">
+    <java classname="${main.class.name}" fork="true" classpathref="main.class.path">
+      <env key="GRIDGAIN_HOME" value="${gridgain.dir}"/>
+      <env key="BLAST_HOME" value="${blast.dir}"/>
+      <arg line="${spec.data.dir}/sequences/NC_003103_r.conorii.fasta"/>
+      <arg line="${blast.data.dir}/human3UTR.fas"/>
+      <arg line="40"/>
+    </java>
+  </target>
+
+  <target name="-compile">
+    <compile.all.macro/>
+  </target>
+
+  <target name="-spec" depends="-compile">
+    <java classname="com.googlecode.furnace.spec.SpecificationRunner" fork="true" classpathref="spec.class.path"/>
+    <!--<instinct failureproperty="specs-failed">-->
+    <!--<classpath refid="spec.class.path"/>-->
+    <!--<specifications dir="${spec.classes.dir}"/>-->
+    <!--<formatter type="brief"/>-->
+    <!--</instinct>-->
+    <!--<fail if="specs-failed" message="Specifications failed."/>-->
+  </target>
+
+  <macrodef name="compile.all.macro">
+    <sequential>
+      <compile.macro classpath.ref="main.class.path" output.dir="${main.classes.dir}" src.path.ref="main.code.path"
+          src.pattern="all.code.pattern"/>
+      <compile.macro classpath.ref="spec.class.path" output.dir="${spec.classes.dir}" src.path.ref="spec.code.path"
+          src.pattern="all.code.pattern"/>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="compile.macro">
+    <attribute name="classpath.ref"/>
+    <attribute name="src.path.ref"/>
+    <attribute name="src.pattern"/>
+    <attribute name="output.dir"/>
+    <sequential>
+      <mkdir dir="@{output.dir}"/>
+      <scalac classpathref="@{classpath.ref}" destdir="@{output.dir}" force="${compile.force}" deprecation="${compile.deprecation}"
+          unchecked="${compile.unchecked}">
+        <src>
+          <path refid="@{src.path.ref}"/>
+        </src>
+        <patternset refid="@{src.pattern}"/>
+      </scalac>
+    </sequential>
+  </macrodef>
+
+  <target name="-scaladoc" depends="-compile">
+    <mkdir dir="${scaladoc.dir}"/>
+    <scaladoc srcdir="${main.src.dir}" destdir="${scaladoc.dir}" classpathref="main.class.path" excludes="${exclude.src.files}"
+        windowtitle="${project.midname} ${project.version.full}" doctitle="${project.longname}&lt;br/&gt;Version ${project.version.full}">
+      <patternset refid="all.code.pattern"/>
+    </scaladoc>
+    <zip destfile="${build.dir}/${scaladoc.zip}">
+      <fileset dir="${scaladoc.dir}"/>
+    </zip>
+  </target>
+
+  <target name="-jar-classes" depends="-compile">
+    <jar destfile="${build.dir}/${project.jar}">
+      <manifest>
+        <attribute name="Main-Class" value="${main.class.name}"/>
+      </manifest>
+      <fileset dir="${main.classes.dir}"/>
+    </jar>
+  </target>
+
+  <target name="-zip-src" depends="-compile">
+    <jar destfile="${build.dir}/${src.zip}">
+      <fileset dir="${main.src.dir}" excludes="${exclude.src.files}"/>
+    </jar>
+  </target>
+
+  <target name="-release" depends="-jar-classes,-zip-src,-scaladoc">
+    <mkdir dir="${release.dir}"/>
+    <zip destfile="${release.dir}/${project.zip}">
+      <fileset dir="${basedir}">
+        <include name="LICENCE"/>
+        <include name="NOTICE"/>
+        <include name="README"/>
+        <include name="RELEASE-NOTES"/>
+      </fileset>
+      <fileset dir="${build.dir}" includes="${project.jar}"/>
+      <fileset dir="${build.dir}" includes="${src.zip}"/>
+      <fileset dir="${build.dir}" includes="${scaladoc.zip}"/>
+      <zipfileset dir="${lib.dir}/ant" prefix="lib" excludes="ant-launcher-*.jar"/>
+      <zipfileset dir="${lib.dir}/scala" prefix="lib"/>
+      <zipfileset dir="${lib.dir}/scalaz" prefix="lib"/>
+    </zip>
+    <checksum file="${release.dir}/${project.zip}" algorithm="MD5"/>
+    <checksum file="${release.dir}/${project.zip}" algorithm="SHA"/>
+  </target>
+
+</project>

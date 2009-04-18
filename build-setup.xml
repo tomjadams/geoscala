@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="obi-setup" default="default" basedir=".">
+
+  <property name="project.longname" value="Furnace - Grid-Based BLAST"/>
+  <property name="project.midname" value="furnace"/>
+  <property name="project.shortname" value="furnace"/>
+  <property name="project.version.major" value="0"/>
+  <property name="project.version.minor" value="0.1"/>
+  <property name="version-status" value=""/>
+  <property name="project.version.full" value="${project.version.major}.${project.version.minor}${version-status}"/>
+  <property name="project.jar" value="${project.shortname}-${project.version.full}.jar"/>
+  <property name="project.zip" value="${project.shortname}-${project.version.full}.zip"/>
+  <property name="src.zip" value="${project.shortname}-${project.version.full}-src.zip"/>
+  <property name="scaladoc.zip" value="${project.shortname}-${project.version.full}-scaladoc.zip"/>
+  <property name="main.package.name" value="com.googlecode.furnace"/>
+  <property name="main.class.name" value="${main.package.name}.SequenceSearcher"/>
+
+  <property name="build.dir" value="build"/>
+  <property name="doc.dir" value="doc"/>
+  <property name="etc.dir" value="etc"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="src.dir" value="src/main"/>
+  <property name="spec.dir" value="src/spec"/>
+
+  <property name="main.src.dir" value="${src.dir}/scala"/>
+  <property name="spec.src.dir" value="${spec.dir}/scala"/>
+  <property name="main.classes.dir" value="${build.dir}/main-classes"/>
+  <property name="spec.classes.dir" value="${build.dir}/spec-classes"/>
+  <property name="release.dir" value="${build.dir}/release"/>
+  <property name="spec.data.dir" value="${spec.dir}/data"/>
+  <property name="scaladoc.dir" value="${build.dir}/scaladoc"/>
+
+  <property name="compile.unchecked" value="on"/>
+  <property name="compile.deprecation" value="on"/>
+  <property name="compile.force" value="never"/>
+
+  <property name="gridgain.dir" value="/opt/gridgain"/>
+
+  <property name="blast.dir" value="/opt/blast"/>
+  <property name="blast.bin.dir" value="${blast.dir}/bin"/>
+  <property name="blast.data.dir" value="${blast.dir}/data"/>
+
+  <property name="exclude.src.files" value=""/>
+
+  <patternset id="all.code.pattern">
+    <include name="**/*.scala"/>
+  </patternset>
+
+  <patternset id="main.classpath.pattern">
+    <include name="${lib.dir}/gridgain/*.jar"/>
+    <include name="${lib.dir}/log4j/*.jar"/>
+    <include name="${lib.dir}/scala/*.jar"/>
+    <include name="${lib.dir}/scalaz/*.jar"/>
+  </patternset>
+  <patternset id="spec.classpath.pattern">
+    <patternset refid="main.classpath.pattern"/>
+    <include name="${lib.dir}/instinct/*.jar"/>
+  </patternset>
+
+  <fileset id="main.code.fileset" dir="${main.src.dir}">
+    <patternset refid="all.code.pattern"/>
+  </fileset>
+  <fileset id="spec.code.fileset" dir="${spec.src.dir}">
+    <patternset refid="all.code.pattern"/>
+  </fileset>
+
+  <path id="main.code.path">
+    <pathelement location="${main.src.dir}"/>
+  </path>
+  <path id="spec.code.path">
+    <pathelement location="${spec.src.dir}"/>
+  </path>
+
+  <path id="main.class.path">
+    <pathelement location="${main.classes.dir}"/>
+    <fileset dir="${basedir}">
+      <patternset refid="main.classpath.pattern"/>
+    </fileset>
+  </path>
+  <path id="spec.class.path">
+    <path refid="main.class.path"/>
+    <pathelement location="${spec.data.dir}"/>
+    <pathelement location="${spec.classes.dir}"/>
+    <fileset dir="${basedir}">
+      <patternset refid="spec.classpath.pattern"/>
+    </fileset>
+  </path>
+
+  <target name="default">
+    <echo message="Nothing to see here..."/>
+  </target>
+
+</project>
