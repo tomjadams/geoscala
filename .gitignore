@@ -1,0 +1,14 @@
+# intellij noise
+.iws
+
+# build
+i-build
+build
+
+# old skool
+.svn
+.cvs
+
+# osx noise
+.DS_Store
+
