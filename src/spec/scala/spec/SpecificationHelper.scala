@@ -18,8 +18,8 @@ package com.googlecode.furnace.spec
 
 import java.io.File
 import java.net.URL
-import util.io.FilePath
-import util.io.FilePath._
+import spec.FilePath
+import spec.FilePath._
 import scalaz.OptionW
 import scalaz.OptionW._
 
