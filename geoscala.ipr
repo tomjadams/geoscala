@@ -117,14 +117,16 @@
   </component>
   <component name="ProjectFileVersion" converted="true" />
   <component name="ProjectKey">
-    <option name="state" value="project:///Users/tom/Projects/Opensource/geoscala/geoscala.ipr" />
+    <option name="state" value="project:///Users/tom/Projects/geoscala/geoscala.ipr" />
   </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/geoscala.iml" filepath="$PROJECT_DIR$/geoscala.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/i-build" />
+  </component>
   <component name="RmicSettings">
     <option name="IS_EANABLED" value="false" />
     <option name="DEBUGGING_INFO" value="true" />
@@ -141,16 +143,6 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-  </component>
-  <component name="libraryTable">
-    <library name="scala">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/scala/scala-library-2.7.3.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/scala/scala-compiler-2.7.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
   </component>
 </project>
 
