@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="obi-setup" default="default" basedir=".">
+<project name="geoscala-setup" default="default" basedir=".">
 
-  <property name="project.longname" value="Furnace - Grid-Based BLAST"/>
-  <property name="project.midname" value="furnace"/>
-  <property name="project.shortname" value="furnace"/>
+  <property name="project.longname" value="GeoScala - A Geocoding Libary For Scala"/>
+  <property name="project.midname" value="GeoScala"/>
+  <property name="project.shortname" value="geoscala"/>
   <property name="project.version.major" value="0"/>
   <property name="project.version.minor" value="0.1"/>
   <property name="version-status" value=""/>
@@ -12,8 +12,8 @@
   <property name="project.zip" value="${project.shortname}-${project.version.full}.zip"/>
   <property name="src.zip" value="${project.shortname}-${project.version.full}-src.zip"/>
   <property name="scaladoc.zip" value="${project.shortname}-${project.version.full}-scaladoc.zip"/>
-  <property name="main.package.name" value="com.googlecode.furnace"/>
-  <property name="main.class.name" value="${main.package.name}.SequenceSearcher"/>
+  <property name="main.package.name" value="geoscala"/>
+  <!--<property name="main.class.name" value="${main.package.name}.SequenceSearcher"/>-->
 
   <property name="build.dir" value="build"/>
   <property name="doc.dir" value="doc"/>

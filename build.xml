@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="furnace" default="all" basedir=".">
+<project name="geoscala" default="all" basedir=".">
 
   <import file="build-setup.xml"/>
 
@@ -17,22 +17,12 @@
     <delete dir="${build.dir}"/>
   </target>
 
-  <target name="sequence" depends="-jar-classes">
-    <java classname="${main.class.name}" fork="true" classpathref="main.class.path">
-      <env key="GRIDGAIN_HOME" value="${gridgain.dir}"/>
-      <env key="BLAST_HOME" value="${blast.dir}"/>
-      <arg line="${spec.data.dir}/sequences/NC_003103_r.conorii.fasta"/>
-      <arg line="${blast.data.dir}/human3UTR.fas"/>
-      <arg line="40"/>
-    </java>
-  </target>
-
   <target name="-compile">
     <compile.all.macro/>
   </target>
 
   <target name="-spec" depends="-compile">
-    <java classname="com.googlecode.furnace.spec.SpecificationRunner" fork="true" classpathref="spec.class.path"/>
+    <java classname="spec.SpecificationRunner" fork="true" classpathref="spec.class.path"/>
     <!--<instinct failureproperty="specs-failed">-->
     <!--<classpath refid="spec.class.path"/>-->
     <!--<specifications dir="${spec.classes.dir}"/>-->
@@ -105,7 +95,6 @@
       <fileset dir="${build.dir}" includes="${project.jar}"/>
       <fileset dir="${build.dir}" includes="${src.zip}"/>
       <fileset dir="${build.dir}" includes="${scaladoc.zip}"/>
-      <zipfileset dir="${lib.dir}/ant" prefix="lib" excludes="ant-launcher-*.jar"/>
       <zipfileset dir="${lib.dir}/scala" prefix="lib"/>
       <zipfileset dir="${lib.dir}/scalaz" prefix="lib"/>
     </zip>
