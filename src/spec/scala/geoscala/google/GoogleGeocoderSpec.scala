@@ -1,9 +1,15 @@
 package geoscala.google
 
 import com.googlecode.instinct.marker.annotate.Specification
+import spec.SpecificationHelper._
 
 final class AGoogleGeocoderWithValidJson {
+  @Specification
+  def xxx {
+    val json = dataFile("/src/spec/data/json/geo.json.js")
 
+    return
+  }
 }
 
 final class ACommandLineProcess {
