@@ -8,9 +8,9 @@ object GoogleGeocoder {
 }
 
 sealed trait GoogleGeocoder {
-  def reverseGeocode(latitude: Float, longitude: Float): Either[Exception, List[Placemark]]
+  def reverseGeocode(latitude: Float, longitude: Float): Either[Throwable, List[Placemark]]
 }
 
 private final class GoogleGeocoder_(apiKey: String) extends GoogleGeocoder {
-  def reverseGeocode(latitude: Float, longitude: Float): Either[Exception, List[Placemark]] = error("huzzah!")
+  def reverseGeocode(latitude: Float, longitude: Float): Either[Throwable, List[Placemark]] = error("huzzah!")
 }

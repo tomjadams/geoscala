@@ -55,6 +55,24 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library name="json-lib">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/json-lib/ezmorph-1.0.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/json-lib/json-lib-2.2.3-jdk15.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/json-lib/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/json-lib/commons-collections-3.2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/json-lib/commons-lang-2.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/json-lib/commons-beanutils-1.8.0.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/etc/lib-doc/json-lib-2.2.3-jdk15-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/etc/lib-src/json-lib-2.2.3-jdk15-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
 

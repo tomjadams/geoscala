@@ -10,11 +10,3 @@ final class AGoogleGeocoderWithValidJson {
     return
   }
 }
-
-final class ACommandLineProcess {
-  @Specification
-  def canBuildCommandLinesWithoutArguments {
-//    val p = command("/opt/blast/bin/blastall")
-//    expect.that(p.commandLine).isEqualTo("/opt/blast/bin/blastall")
-  }
-}
