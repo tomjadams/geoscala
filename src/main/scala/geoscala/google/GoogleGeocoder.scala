@@ -1,5 +1,7 @@
 package geoscala.google
 
+import types.Placemark
+
 // Geocoder, using Google services: http://code.google.com/apis/maps/documentation/geocoding/index.html.
 object GoogleGeocoder {
   def geocoder(apiKey: String): GoogleGeocoder = new GoogleGeocoder_(apiKey)

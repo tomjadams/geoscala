@@ -1,4 +1,4 @@
-package geoscala.google
+package geoscala.google.types
 
 final case class PostalCode(postalCodeNumber: String)
 final case class Thoroughfare(name: String)
