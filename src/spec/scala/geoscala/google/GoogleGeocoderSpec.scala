@@ -6,8 +6,7 @@ import spec.SpecificationHelper._
 final class AGoogleGeocoderWithValidJson {
   @Specification
   def xxx {
-    val json = dataFile("json/geo.json.js")
-
+    val json = dataFileContents("json/geo.json.js")
     return
   }
 }

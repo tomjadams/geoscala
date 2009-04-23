@@ -4,17 +4,12 @@ import java.io.File
 import java.net.URL
 import scalaz.OptionW
 import scalaz.OptionW._
+import ReadableFile._
 
 object SpecificationHelper {
-  // TODO Add an implicit param here for the data root directory (specDataRootDir).
-  def dataFile(path: String): FilePath = dataFileFromAntBuild(canonicalise(path))
+  def dataFileContents(path: String) = (dataFile(path): File).slurp
 
-  def dataFileFromAntBuild(path: String) = getResource(canonicalise(path)) | dataFileFromIntelliJ(path)
-
-  def dataFileFromIntelliJ(path: String) = {
-    val intellijPath = canonicalise("geoscala" + canonicalise(path))
-    getResource(intellijPath).err("No resource found at '" + path + "' or '" + intellijPath + "'")
-  }
+  def dataFile(path: String): FilePath = getResource(canonicalise(path)).err("No resource found at '" + path + "'")
 
   def getResource(path: String) = SpecificationHelper.getClass.getResource(path)
 

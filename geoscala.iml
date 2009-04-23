@@ -47,8 +47,12 @@
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/scalaz/scalaz-3.4.jar!/" />
         </CLASSES>
-        <JAVADOC />
-        <SOURCES />
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/etc/lib-doc/scalaz-doc-3.4.zip!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/etc/lib-src/scalaz-3.4-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

@@ -28,6 +28,7 @@
       <entry name="?*.dtd" />
       <entry name="?*.tld" />
       <entry name="?*.ftl" />
+      <entry name="?*.js" />
     </wildcardResourcePatterns>
   </component>
   <component name="CopyrightManager" default="">
@@ -117,7 +118,7 @@
   </component>
   <component name="ProjectFileVersion" converted="true" />
   <component name="ProjectKey">
-    <option name="state" value="project:///Users/tom/Projects/geoscala/geoscala.ipr" />
+    <option name="state" value="project:///Users/tom/Projects/OpenSource/geoscala/geoscala.ipr" />
   </component>
   <component name="ProjectModuleManager">
     <modules>
