@@ -22,8 +22,12 @@
           <root url="jar://$MODULE_DIR$/lib/scala/scala-library-2.7.3.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/scala/scala-compiler-2.7.3.jar!/" />
         </CLASSES>
-        <JAVADOC />
-        <SOURCES />
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/etc/lib-doc/scala-library-2.7.3-scaladoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/etc/lib-src/scala-2.7.3.final-sources.zip!/" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
