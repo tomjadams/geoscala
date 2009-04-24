@@ -7,19 +7,9 @@ import types.Placemark
 final class JsonParser {
   def placemarks(json: String): Either[Throwable, List[Placemark]] =
     try {
-      val result: JSONObject = JSONObject.fromObject(json)
-      val maybePlacemarks: Option[JSONArray] = onull(result.optJSONArray("Placemark"))
-
-      maybePlacemarks.map((placemarks: JSONArray) => {
-        val x = placemarks.iterator().foreach(a => a.foreach(p => println(">> p: " + p)))
-        1
-      })
-
-//      maybePlacemarks.map((placemarks: JSONArray) => {
-//        toCollection(placemarks).map((j: JSONObject) => parsePlaceMark(j))
-//      }).toRight[Throwable](exception("Unable to find Placemark array"))
-//
-      Right(Nil)
+      val maybePlacemarks = onull(JSONObject.fromObject(json).optJSONArray("Placemark"))
+      val maybeParsedPlacemarks = maybePlacemarks.map(placemarks => 0.until(placemarks.size).map(placemarks.getJSONObject(_)).map(parsePlaceMark(_)).toList)
+      maybeParsedPlacemarks.toRight[Throwable](exception("Unable to find Placemark array"))
     }
     catch {
       case t: Throwable => Left(t)
