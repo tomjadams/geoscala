@@ -1,13 +1,13 @@
-                                  ***********
-*********************************   Furnace   *********************************
-                                  ***********
+                                  ************
+*********************************   Geoscala   *********************************
+                                  ************
 
-                       <http://furnace.googlecode.com/>
+                       <http://geoscala.googlecode.com/>
 
 
-* What is Furnace? *
+* What is Geoscala? *
 
-Furnace is a grid-enabled version of NCBI BLAST [1].
+Geoscala is a geocoding API for Scala.
 
 
 * Distribution Contents *
@@ -15,45 +15,21 @@ Furnace is a grid-enabled version of NCBI BLAST [1].
 The distribution contains the following contents:
 
 o README           - This readme file.
-o LICENCE          - Furnace licence file.
-o NOTICE           - Licence notices for libraries used in Furnace.
+o LICENCE          - Geoscala licence file.
+o NOTICE           - Licence notices for libraries used in Geoscala.
 o RELEASE-NOTES    - Release notes for this & previous releases.
-o lib/             - Libraries required by Furnace at runtime, see below for details.
+o lib/             - Libraries required by Geoscala at runtime, see below for details.
 
 
 * Documentation *
 
-Documentation can be found at: http://furnace.googlecode.com/.
-
-
-* Installation *
-
-Note. Furnace requires a Unix or Unix-like operating system, and may not work
-      on non-Unix systems.
-
-1. Downlaod and install BLAST [1] on each grid node.
-
-2. Configure BLAST with the database:
-
-  1. Unzip etc/database/human3UTR.zip
-  2. $ /opt/blast/bin/formatdb -i human3UTR.fas -p F -o T
-  3. $ cp etc/database/human3UTR.fas* /opt/blast/data/
-
-2. Download and install GridGain [2] on each grid node.
-
-3. Start GridGain:
-
-  $ /opt/gridgain/bin/gridgain.sh
-
-4. Run it...
-
-  $ ./build.sh sequence
+Documentation can be found at: http://geoscala.googlecode.com/.
 
 
 * Source *
 
-Source code is available within the obi-<version>-src.jar. Complete source is
-available at: http://furnace.googlecode.com/
+Source code is available within the geoscala-<version>-src.jar. Complete source is
+available at: http://Geoscala.googlecode.com/
 
 
 * Contributions *
@@ -61,10 +37,4 @@ available at: http://furnace.googlecode.com/
 Developers
 o Tom Adams
 
-Thanks to the work done on Scala, Scalaz and BLAST.
-
-
-* References *
-
-[1] http://www.ncbi.nlm.nih.gov/blast/download.shtml
-[2] http://gridgain.com/downloads.html
+Thanks to the work done on Scala & Scalaz.
